@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  selectedPage = '';
+
+  onPageSelected(page: string) {
+    this.selectedPage = page;
+  }
 }
