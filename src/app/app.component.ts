@@ -6,10 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  selectedPage = '';
-
-  onPageSelected(page: string) {
-    this.selectedPage = page;
-  }
 }
