@@ -14,7 +14,8 @@ import {ShoppingListService} from './shared/services/shopping-list.service';
 import {AppRoutingModule} from './app-routing.module';
 import { EmptyRecipeComponent } from './recipes/empty-recipe/empty-recipe.component';
 import { EditRecipeComponent } from './recipes/edit-recipe/edit-recipe.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RecipesService} from './shared/services/recipes.service';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,10 @@ import {FormsModule} from '@angular/forms';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
