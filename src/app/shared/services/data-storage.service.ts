@@ -1,25 +1,29 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Recipe} from '../model/recipe.model';
 import {RecipesService} from './recipes.service';
-import {map, tap} from 'rxjs/operators';
+import {exhaustMap, map, take, tap} from 'rxjs/operators';
+import {AuthService} from './auth.service';
 
 @Injectable({providedIn: 'root'})
-export class DataStorageService{
-  private postsUrl = 'https://APP_NAME.firebaseio.com/';
+export class DataStorageService {
+  private postsUrl = 'https://fymo-recipes-app.firebaseio.com/';
 
-  constructor(private http: HttpClient, private recipesService: RecipesService) {}
+  constructor(private http: HttpClient, private recipesService: RecipesService, private authService: AuthService) {
+  }
 
   storeRecipes(): void {
     const recipes = this.recipesService.getRecipes();
     this.http.put(this.postsUrl + 'recipes.json', recipes)
       .subscribe(response => {
-      console.log(response);
-    });
+        console.log(response);
+      });
   }
 
   fetchRecipes() {
-    return this.http.get<Recipe[]>(this.postsUrl + 'recipes.json')
+
+    return this.http.get<Recipe[]>(
+      this.postsUrl + 'recipes.json')
       .pipe(
         map(recipes => {
           return recipes.map(recipe => {
