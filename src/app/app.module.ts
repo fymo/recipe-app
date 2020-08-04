@@ -20,6 +20,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import {LoadingSpinnerComponent} from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import {AlertComponent} from './shared/alert/alert.component';
+import {PlaceholderDirective} from './shared/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective,
     EmptyRecipeComponent,
     EditRecipeComponent,
     LoadingSpinnerComponent,
-    AuthComponent
+    AuthComponent,
+    AlertComponent,
+    DropdownDirective,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
